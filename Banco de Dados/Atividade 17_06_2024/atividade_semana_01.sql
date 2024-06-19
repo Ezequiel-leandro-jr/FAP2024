@@ -51,3 +51,6 @@ INSERT INTO tarefas(tarefa_id, descricao, data_inicio, data_finalizacao) VALUES(
 
 ## CONSULTANDO A TABELA MEMBROS, ONDE O GENERO SEJA FEMININO ##
 SELECT * FROM membros WHERE genero = 'F';
+
+## CONSULTANDO NA JUNÇÃO DAS TABELAS MEMBROS E ATIVIDADES, APENAS OS MEMBROS DO SEXO FEMININO: SEU NOME, DESCRICAO DA ATIVIDADE, INICIO E FIM DA ATIVIDADE
+SELECT membros.nome, tarefas.descricao FROM membros INNER JOIN tarefas ON membros.membro_id=tarefas.membro_id WHERE membros.genero = 'F';
