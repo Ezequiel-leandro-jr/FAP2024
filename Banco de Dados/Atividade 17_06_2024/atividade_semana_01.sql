@@ -16,7 +16,7 @@ FOREIGN KEY (membro_id)  REFERENCES membros(membro_id)
 );
 
 ## INSERINDO OS VALORES DE NOVOS MEMBROS E TAREFAS NAS COLUNAS DAS RESPECTIVAS TABELAS ##
-INSERT INTO membros(membro_id, nome, cargo) VALUES(2,'Paulo','Programador 1');
+INSERT INTO membros(membro_id, nome, cargo) VALUES(1,'Paulo','Programador 1');
 INSERT INTO tarefas(tarefa_id, descricao, membro_id) VALUES(1, 'Criar classe produto', 1);
 
 ## SELECIONANDO COLUNAS DAS TABELAS PARA VISUALIZAÇÃO ##
