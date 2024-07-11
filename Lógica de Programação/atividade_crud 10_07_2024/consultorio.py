@@ -129,7 +129,7 @@ def main():
         
         match opcao:
             case "1":
-                os.system('cls')
+                #os.system('cls')
                 print('\tCADASTRO DE PACIENTE:')
                 prontuario = input("\nDigite o prontuario do novo paciente: ")
                 nome = input("Digite o nome completo do novo paciente (sem acentos): ")
@@ -185,7 +185,23 @@ def main():
                     #print("\nPressione Enter para continuar...")
                     #char = msvcrt.getch()
             case "3":
-                pass
+                print('\tListagem Geral dos Pacientes')
+                print('\t----------------------------')
+                total = 0
+                for elemento in consultorio:
+                    total = total + 1  
+                print(f"\tTotal.........{total}")
+                total = 0
+                for paciente in consultorio:
+                    print(f""" 
+                      PRONTUARIO: {paciente.prontuario} | CPF: {paciente.cpf}
+                      NOME: {paciente.nome} | IDADE: {paciente.idade} | SEXO: {paciente.sexo}
+                      DATA DA CONSULTA: {paciente.data} | HORARIO: {paciente.hora}
+                      ESPECIALIDADE: {paciente.especialidade} | MEDICO(A): {paciente.medico}
+                      RETORNO: {paciente.retorno}
+                      ______________________________________________________________________
+                       """)
+                
             case "4":
                 #os.system('cls')
                 print('\tALTERAR CADASTRO DE PACIENTE:\n')
@@ -224,7 +240,7 @@ def main():
                         #print("\nPressione Enter para continuar...")
                         #char = msvcrt.getch()
                     else:
-                        atualizar_paciente(paciente, atributo, indice)
+                        atualizar_paciente(atributo, indice)
                         print(f"""
                       Paciente atualizado com sucesso!
                       _____________________________________
