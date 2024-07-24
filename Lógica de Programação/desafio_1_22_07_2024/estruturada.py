@@ -1,31 +1,52 @@
 import os
 import time
 lista_carros = []
-indice = 1 
 
 
-def imprimir(indice):
+
+def imprimir(placa):
     for carro in lista_carros:
-        if carro["indice"] == indice:
+        if carro["placa"] == placa:
             print(f'''
             -----------------------------------------------------------------------
-            N°: {carro["indice"]} MARCA: {carro["marca"]} MODELO: {carro["modelo"]}
-                                  ANO: {carro["ano"]}     COR: {carro["cor"]}
+            N°:{carro["placa"]} MARCA:{carro["marca"]} MODELO:{carro["modelo"]}
+            ANO:{carro["ano"]} COR:{carro["cor"]}
             -----------------------------------------------------------------------''')
 
-def cadastrar(indice):
-    print('=== cadastro ===\n')
-    marca = input('Digite a marca do carro: ')
-    modelo = input('Digite o modelo do carro: ')
-    ano = int(input('Digite o ano do carro: '))
-    cor = input('Digite a cor do carro: ')
-    carro = dict(indice=indice, marca=marca, modelo=modelo, ano=ano, cor=cor, motor=False)
-    return carro
+def cadastrar():
+    op = 1
+    while op == 1:
+        os.system('cls' if os.name == 'nt' else 'clear')
+        print('=== CADASTRO ===\n')
+        placa = input('DIGITE A PLACA DO CARRO: ')
+        marca = input('DIGITE A MARCA DO CARRO: ')
+        modelo = input('DIGITE O MODELO DO CARRO: ')
+        ano = int(input('DIGITE O ANO DO CARRO: '))
+        cor = input('DIGITE A COR DO CARRO: ')
+        carro = dict(placa=placa, marca=marca, modelo=modelo, ano=ano, cor=cor, motor=False)
+        lista_carros.append(carro)
+        
+        op = 3
+        while op != 1 or op != 2:
+            os.system('cls' if os.name == 'nt' else 'clear')
+            print('=== CADASTRO ===\n')
+            print('CADASTRO REALIZADO COM SUCESSO!')
+            imprimir(carro["placa"])
+            op = int(input('''OPCAO: 
+            [1] NOVO CADASTRO [2] VOLTAR AO MENU'''))
+            if op == 1:
+                break
+            elif op == 2:
+                break
+            else:
+                os.system('cls' if os.name == 'nt' else 'clear')
+                print('OPCAO INVALIDA! TENTE NOVAMENTE!')
+                time.sleep(2)
 
-def ligar_desligar(indice):
+def ligar_desligar(placa):
     
     for carro in lista_carros:
-        if carro["indice"] == indice:
+        if carro["placa"] == placa:
             motor = carro["motor"]
             
     op = int(input('''
@@ -68,24 +89,20 @@ def cabecalho():
     --------------------
             MENU
     ____________________      
-    1. Cadastrar
-    0. Sair
+    [1] CADASTRAR
+    [0] SAIR
     ____________________''')
 
-def main(indice):
+def main():
     while True:
         cabecalho()
         op = int(input('>> '))
         match op:
             case 1:
-                carro = cadastrar(indice)
-                indice = indice + 1
-                lista_carros.append(carro)
-                imprimir(carro["indice"])
-                ligar_desligar(carro["indice"])
+                carro = cadastrar()
             case 0:
                 print('Saindo do sistema. Volte sempre...')
                 break
 
 if __name__ == "__main__":
-    main(indice)
+    main()
