@@ -3,7 +3,9 @@ import time
 lista_carros = []
 
 
-
+def buscar():
+    placa = input('DIGITE A PLACA DO CARRO: ')
+    
 def imprimir(placa):
     for carro in lista_carros:
         if carro["placa"] == placa:
@@ -43,7 +45,7 @@ def cadastrar():
                 print('OPCAO INVALIDA! TENTE NOVAMENTE!')
                 time.sleep(2)
 
-def ligar_desligar(placa):
+def aterar(placa):
     
     for carro in lista_carros:
         if carro["placa"] == placa:
@@ -90,6 +92,7 @@ def cabecalho():
             MENU
     ____________________      
     [1] CADASTRAR
+    [2] ALTERAR
     [0] SAIR
     ____________________''')
 
